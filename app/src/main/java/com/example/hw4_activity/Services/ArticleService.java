@@ -34,6 +34,10 @@ public class ArticleService {
         return articles;
     }
 
+    public static String[] getArticleTitles() {
+        return articles.stream().map(Article::getTitle).toArray(String[]::new);
+    }
+
     public static Article getArticleByTitle(String title) {
         List<Article> articlesBuff = articles.stream()
                 .filter(article -> article.getTitle()

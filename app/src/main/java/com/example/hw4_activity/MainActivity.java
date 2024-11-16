@@ -3,7 +3,10 @@ package com.example.hw4_activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -25,25 +28,35 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        List<Article> articles = ArticleService.getArticles();
+        String[] articleStrings = ArticleService.getArticleTitles();
 
-        Button button = findViewById(R.id.button1);
-        button.setText(articles.get(0).getTitle());
+        ListView articlesListView = findViewById(R.id.articles_list_view);
 
-        button = findViewById(R.id.button2);
-        button.setText(articles.get(1).getTitle());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, articleStrings);
 
-        button = findViewById(R.id.button3);
-        button.setText(articles.get(2).getTitle());
+        articlesListView.setAdapter(adapter);
+        articlesListView.setOnItemClickListener(((parent, view, position, id) -> {
+            String title = (String) parent.getItemAtPosition(position);
 
-        button = findViewById(R.id.button4);
-        button.setText(articles.get(3).getTitle());
+            goToArticle(title);
+        }));
+
+
+//        Button button = findViewById(R.id.button1);
+//        button.setText(articles.get(0).getTitle());
+//
+//        button = findViewById(R.id.button2);
+//        button.setText(articles.get(1).getTitle());
+//
+//        button = findViewById(R.id.button3);
+//        button.setText(articles.get(2).getTitle());
+//
+//        button = findViewById(R.id.button4);
+//        button.setText(articles.get(3).getTitle());
     }
 
-    public void goToArticle(View view) {
-        Button button = (Button) view;
-        String title = button.getText().toString();
-
+    public void goToArticle(String title) {
         Intent intent = new Intent(MainActivity.this, WholeArticleActivity.class);
         intent.putExtra("title", title);
         startActivity(intent);

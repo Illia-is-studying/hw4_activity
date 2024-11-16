@@ -9,40 +9,8 @@
     android:background="#f5f5f5"
     android:id="@+id/main">
 
-    <Button
-        android:id="@+id/button1"
+    <ListView
+        android:id="@+id/articles_list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
-        android:textColor="#ffffff"
-        android:layout_marginBottom="8dp"
-        android:onClick="goToArticle"/>
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
-        android:textColor="#ffffff"
-        android:layout_marginBottom="8dp"
-        android:onClick="goToArticle"/>
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
-        android:textColor="#ffffff"
-        android:layout_marginBottom="8dp"
-        android:onClick="goToArticle"/>
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
-        android:textColor="#ffffff"
-        android:layout_marginBottom="8dp"
-        android:onClick="goToArticle"/>
-
+        android:layout_height="wrap_content" />
 </LinearLayout>
